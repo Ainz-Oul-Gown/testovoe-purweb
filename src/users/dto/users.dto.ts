@@ -35,12 +35,6 @@ export class CreateUsersDto {
 }
 
 export class UpdateUserDto extends PartialType(CreateUsersDto) {
-    @ApiProperty({
-        description: 'Id пользователя',
-        nullable: false,
-        example: 'dfklajdlfjaldjfa',
-    })
-    id: string;
 }
 
 export class ReturnedUsersDto {

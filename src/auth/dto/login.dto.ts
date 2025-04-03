@@ -17,7 +17,7 @@ export class LoginDto {
         nullable: false,
         example: '45Yte!',
     })
-    @IsNotEmpty()
+    @IsNotEmpty({message: 'Пароль обязателен'})
     @IsString()
     @MinLength(5, { message: "Пароль слишком короткий"})
     @MaxLength(20, { message: "Пароль слишком длинный"})

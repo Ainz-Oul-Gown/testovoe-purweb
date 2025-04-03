@@ -1,6 +1,5 @@
 import {IsNotEmpty, IsString, MaxLength} from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
-import { PartialType } from '@nestjs/swagger';
+import {ApiProperty, PartialType} from "@nestjs/swagger";
 
 
 export class CreateColumnDto {
@@ -16,12 +15,6 @@ export class CreateColumnDto {
 }
 
 export class UpdateColumnDto extends PartialType(CreateColumnDto) {
-    @ApiProperty({
-        description: 'Id колонки',
-        nullable: false,
-        example: 'dfklajdlfjaldjfa',
-    })
-    id: string;
 }
 
 export class ReturnedColumnDto {

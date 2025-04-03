@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsOptional, IsString, MaxLength, MinLength} from 'class-validator';
+import {IsNotEmpty, IsOptional, IsString, MaxLength} from 'class-validator';
 import {ApiProperty, PartialType} from "@nestjs/swagger";
 
 export class CreateCardsDto {
@@ -24,12 +24,6 @@ export class CreateCardsDto {
 }
 
 export class UpdateCardDto extends PartialType(CreateCardsDto) {
-    @ApiProperty({
-        description: 'Id карточки',
-        nullable: false,
-        example: 'dfklajdlfjaldjfa',
-    })
-    id: string;
 }
 
 export class ReturnedCardDto {
