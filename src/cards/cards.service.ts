@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../../prisma/prisma.service";
+import {Injectable} from "@nestjs/common";
+import {PrismaService} from "../../prisma/prisma.service";
 import {CreateCardsDto, UpdateCardDto} from "./dto";
 
 @Injectable()
@@ -16,34 +16,34 @@ export class CardsService {
         });
     }
 
-    async findAll(userId: string, columnId: string) {
+    async findAll(columnId: string) {
         return this._prismaService.card.findMany({
-            where: { columnId, userId },
+            where: {columnId},
         });
     }
 
-    async findOne(userId: string, columnId: string, id: string) {
+    async findOne(columnId: string, id: string) {
         return this._prismaService.card.findFirst({
             where: { id, columnId },
         });
     }
 
 
-    async update(userId: string, columnId: string, id: string, updateCardDto: UpdateCardDto) {
+    async update(columnId: string, id: string, updateCardDto: UpdateCardDto) {
         return this._prismaService.card.update({
             where: { id, columnId },
             data: updateCardDto,
         });
     }
 
-    async partialUpdate(userId: string, columnId: string, id: string, updateCardDto: UpdateCardDto) {
+    async partialUpdate(columnId: string, id: string, updateCardDto: UpdateCardDto) {
         return this._prismaService.card.update({
             where: { id, columnId },
             data: updateCardDto,
         });
     }
 
-    async remove(userId: string, columnId: string, id: string) {
+    async remove(columnId: string, id: string) {
         return this._prismaService.card.delete({
             where: { id },
         });

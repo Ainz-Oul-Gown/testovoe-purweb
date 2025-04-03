@@ -1,16 +1,6 @@
-import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    Param,
-    Patch,
-    Post,
-    Put, UseGuards,
-} from '@nestjs/common';
-import { ColumnsService } from './columns.service';
-import {CreateColumnDto, ReturnedColumnDto} from './dto';
-import { UpdateColumnDto } from './dto';
+import {Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards,} from '@nestjs/common';
+import {ColumnsService} from './columns.service';
+import {CreateColumnDto, ReturnedColumnDto, UpdateColumnDto} from './dto';
 import {AuthGuard} from "@nestjs/passport";
 import {Owner, OwnerGuard} from "../auth/owner.guard";
 import {ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation} from "@nestjs/swagger";
@@ -46,7 +36,7 @@ export class ColumnsController {
 
     @ApiOperation({ summary: 'Обновление колонки' })
     @ApiOkResponse({ type: ReturnedColumnDto })
-    @Owner('id')
+    @Owner('id', 'column')
     @Put(':id')
     update(@Param('userId') userId: string,
            @Param('id') id: string,
@@ -56,7 +46,7 @@ export class ColumnsController {
 
     @ApiOperation({ summary: 'Частичное обновление колонки' })
     @ApiOkResponse({ type: ReturnedColumnDto })
-    @Owner('id')
+    @Owner('id', 'column')
     @Patch(':id')
     partialUpdate(@Param('userId') userId: string,
                   @Param('id') id: string,
@@ -66,7 +56,7 @@ export class ColumnsController {
 
     @ApiOperation({ summary: 'Удаление колонки' })
     @ApiOkResponse({ type: ReturnedColumnDto })
-    @Owner('id')
+    @Owner('id', 'column')
     @Delete(':id')
     remove(@Param('userId') userId: string,
            @Param('id') id: string) {

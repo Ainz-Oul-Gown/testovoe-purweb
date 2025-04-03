@@ -1,7 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from "../../prisma/prisma.service";
-import { CreateCommentDto } from './dto';
-import { UpdateCommentDto } from './dto';
+import {Injectable} from '@nestjs/common';
+import {PrismaService} from "../../prisma/prisma.service";
+import {CreateCommentDto, UpdateCommentDto} from './dto';
 
 @Injectable()
 export class CommentsService {
@@ -17,37 +16,37 @@ export class CommentsService {
         });
     }
 
-    async findAll(userId: string, cardId: string) {
+    async findAll(cardId: string) {
         return this._prismaService.comment.findMany({
             where: { cardId }
         });
     }
 
-    async findOne(userId: string, cardId: string, id: string) {
+    async findOne(cardId: string, id: string) {
         return this._prismaService.comment.findFirst({
             where: { id, cardId }
         });
     }
 
-    async update(userId: string, cardId: string, id: string, updateCommentDto: UpdateCommentDto) {
+    async update(cardId: string, id: string, updateCommentDto: UpdateCommentDto) {
         return this._prismaService.comment.update({
-            where: { id },
+            where: {id, cardId},
             data: updateCommentDto,
         });
     }
 
 
-    async partialUpdate(userId: string, cardId: string, id: string, updateCommentDto: UpdateCommentDto) {
+    async partialUpdate(cardId: string, id: string, updateCommentDto: UpdateCommentDto) {
         return this._prismaService.comment.update({
-            where: { id },
+            where: {id, cardId},
             data: updateCommentDto,
         });
     }
 
 
-    async remove(userId: string, cardId: string, id: string) {
+    async remove(cardId: string, id: string) {
         return this._prismaService.comment.delete({
-            where: { id }
+            where: {id, cardId}
         });
     }
 }
