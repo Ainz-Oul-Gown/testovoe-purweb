@@ -1,6 +1,5 @@
 import {IsNotEmpty, IsString, MaxLength} from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
-import { PartialType } from '@nestjs/swagger';
+import {ApiProperty, PartialType} from "@nestjs/swagger";
 
 export class CreateCommentDto {
     @ApiProperty({
